@@ -7,6 +7,7 @@ import { getUserProgress, getUserSubscription } from "@/db/queries";
 import { userProgress, userSubscription } from '../../../db/schema';
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { Items } from "@/app/(main)/shop/items";
+import { Quests } from "@/components/Quests";
 
 const ShopPage = async() => {
     const userProgressData = getUserProgress();
@@ -32,6 +33,7 @@ const ShopPage = async() => {
                 hasActiveSubscription={isPro}
                 // hasActiveSubscription={false}
             />
+            <Quests points={userProgress.points} />
             </StickyWrapper>
             <FeedWrapper>
                 <div className="flex w-full flex-col items-center">
@@ -45,8 +47,8 @@ const ShopPage = async() => {
                     <Items 
                         hearts={userProgress.hearts}
                         points={userProgress.points}
-                        // hasActiveSubscription={isPro}
-                        hasActiveSubscription={false}
+                        hasActiveSubscription={isPro}
+                        // hasActiveSubscription={false}
                     />
                 </div>
             </FeedWrapper>
